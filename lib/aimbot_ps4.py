@@ -123,13 +123,18 @@ class Aimbot:
         if not gamepad == None:
             l2 = gamepad.get_axis(4)
 
-        if l2 > -0.25 or win32api.GetKeyState(0x02) in (-127, -128):
+        if l2 > -0.25:
             l2_msg = 'L2 is Pressed'
+        else:
+            l2_msg = 'L2 is Released'
+
+        if l2 > -0.25 or win32api.GetKeyState(0x02) in (-127, -128):
+            # l2_msg = 'L2 is Pressed'
             sys.stdout.write("\033[K")
             print(f"[!] AIMBOT IS [{Aimbot.aimbot_status}], Targeting is On, and [{l2_msg}]", end = "\r")
             return True
         else:
-            l2_msg = 'L2 is Released'
+            # l2_msg = 'L2 is Released'
             sys.stdout.write("\033[K")
             print(f"[!] AIMBOT IS [{Aimbot.aimbot_status}], Targeting is Off, and [{l2_msg}]", end = "\r")
             return False
